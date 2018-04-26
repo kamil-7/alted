@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  {% include 'coins/coin_detail_header/coin_detail_header.html' %}
+
+  <div class="container content">
+    <div class="mdl-tabs mdl-js-tabs">
+      <div class="mdl-tabs__tab-bar">
+        <a href="{% url 'coin-detail' coin.slug %}" class="mdl-tabs__tab">Prices</a>
+        <a href="{% url 'coin-markets' coin.slug %}" class="mdl-tabs__tab">Markets</a>
+        <a href="{% url 'coin-price-differences' coin.slug %}" class="mdl-tabs__tab is-active">Price Differences</a>
+      </div>
+    </div>
+    <div class="coin-price-differences-component"></div>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}

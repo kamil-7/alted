@@ -1,0 +1,71 @@
+{% extends "account/base.html" %}
+{% load addclass socialaccount %}
+
+{% block account_title %}Signup{% endblock %}
+
+{% block account_content %}
+  <div class="account row">
+    <h1>Sign Up</h1>
+    <p>Already have an account? Then please <a class="blue-link" href="{% url 'account_login' %}">log in</a>.</p>
+
+{#    <div class="col-md-5 account__social">#}
+{#      {% include 'common/google_button/google_button.html' with action='login' text='Sign Up with Google' %}#}
+{#    </div>#}
+{##}
+{#    <div class="col-md-1 or-container">#}
+{#      <span class="or">or</span>#}
+{#    </div>#}
+
+    <div class="col-md-6">
+      <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% if form.subject.errors %}
+          <ol>
+            {% for error in form.subject.errors %}
+              <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+          </ol>
+        {% endif %}
+        {% csrf_token %}
+        <div class="account__field">
+          <label for="id_email">
+            Email
+          </label>
+          <div>
+            {{ form.email|addclass:'account__input' }}
+            {% for error in form.email.errors %}
+              <div class="mdl-textfield__error">
+                {{ error|escape }}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="account__field">
+          <label for="id_password">
+            Password
+          </label>
+          {{ form.password|addclass:'account__input' }}
+          {% for error in form.password.errors %}
+            <div class="mdl-textfield__error">
+              {{ error|escape }}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% for error in form.non_field_errors %}
+          <div class="mdl-textfield__error account__form-error">
+            {{ error|escape }}
+          </div>
+        {% endfor %}
+
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored signup__button" type="submit">Sign Up</button>
+      </form>
+    </div>
+
+  </div>
+{% endblock %}
+

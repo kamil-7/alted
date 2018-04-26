@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+  <div class="heading-bar">
+    <div class="container">
+      <div class="heading-bar__content">
+        <h1>Markets</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container content">
+    <table class="market_list mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Market</th>
+          <th>Price</th>
+          <th>Volume 24h in BTC</th>
+          <th>Volume 24h in USD</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for market in object_list %}
+          <tr onclick="window.location='{% url 'market-detail' market.slug %}';">
+            <td class="mdl-data-table__cell--non-numeric"><a href="{% url 'market-detail' market.slug %}">{{ market.name }}</a></td>
+            <td>{{ market.price | intcomma }}</td>
+            <td>{{ market.volume_btc | intcomma }}</td>
+            <td>{{ market.volume_usd | intcomma }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

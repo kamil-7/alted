@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container content">
+    <div class="price-diff-component"></div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static "dist/price_diff.js" %}"></script>
+{% endblock %}

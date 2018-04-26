@@ -1,0 +1,65 @@
+.coin__usd {
+  font-size: 32px
+}
+
+.coin__btc {
+  font-size: 24px;
+}
+
+.coin__header {
+  @include shadow();
+  background: #fff;
+}
+
+.coin__header-cell {
+  padding: 8px;
+}
+
+.tooltip {
+  z-index: 1;
+  position: absolute;
+  min-width: 80px;
+  padding: 8px;
+  font: 16px sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background-color: #fff;
+  pointer-events: none;
+}
+
+//.price-diff__point {
+//}
+
+path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line {
+  stroke: lightgrey;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.price-diff__buy-line {
+  stroke: #1B5E20
+}
+.price-diff__sell-line {
+  stroke: #B71C1C
+}

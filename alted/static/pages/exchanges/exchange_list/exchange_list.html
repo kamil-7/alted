@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+  <div class="heading-bar">
+    <div class="container">
+      <div class="heading-bar__content">
+        <h1>Exchanges</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container content">
+    <table class="exchange_list mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Exchange</th>
+          <th>Volume 24h in BTC</th>
+          <th>Volume 24h in USD</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for exchange in object_list %}
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric"><a href="{% url 'exchange-detail' exchange.slug %}">{{ exchange.name }}</a></td>
+            <td>{{ exchange.volume_btc | intcomma }}</td>
+            <td>{{ exchange.volume_usd | intcomma }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

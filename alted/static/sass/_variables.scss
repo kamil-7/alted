@@ -1,0 +1,42 @@
+@import 'material-colors';
+
+$white: #fff;
+$light-grey: #f7f7f; // background
+$light-blue: #dde0ec;
+$silver: #666;
+
+$blue: rgb(33, 150, 243); // primary
+$dark-blue: rgb(25, 118, 210); // primary darkened
+
+$yellow: rgb(255, 193, 7); // accent
+$yellow: rgb(255, 160, 0); // accent darkened
+
+$grey: rgb(66, 66, 66);
+
+$purple: #443850;
+//$grey: #414141; // icons and lines
+$error: rgb(255, 0, 0);
+
+$h-margin-top: 0;
+$h-margin-bottom: 12px;
+$h-margin-bottom-small: 8px; // h4 - h6
+
+$shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+$width: 600px;
+
+$xs-max: 575px;
+
+$sm-min: 576px;
+$sm-max: 767px;
+
+$md-min: 768px;
+$md-max: 991px;
+
+$lg-min: 992px;
+$lg-max: 1199px;
+
+$xl-min: 1200px;
+
+$black-primary: rgba(0, 0, 0, .87);
+$black-secondary: rgba(0, 0, 0, .54);

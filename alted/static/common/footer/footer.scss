@@ -1,0 +1,16 @@
+.footer {
+  margin-top: 32px;
+  display: none;
+}
+
+.footer__left {
+  float: left;
+  color: white;
+  text-align: left;
+}
+
+.footer__right > a {
+  float: right;
+  color: white;
+  text-align: right;
+}

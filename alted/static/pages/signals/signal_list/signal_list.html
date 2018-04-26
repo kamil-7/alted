@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="heading-bar">
+    <div class="container">
+      <div class="heading-bar__content">
+        <h1>Signals</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content">
+    <div class="signals">
+      <h2 class="signals__section">Triggered Signals</h2>
+      <table class="signals__table mdl-data-table mdl-js-data-table mdl-data-table--no-border signals__conditions-table">
+        <thead>
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">Time</th>
+          <th class="mdl-data-table__cell--non-numeric">Signal Name</th>
+          <th class="mdl-data-table__cell--non-numeric">Conditions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in event_list %}
+          <tr>
+            {% if event.date %}
+              <td class="mdl-data-table__cell--non-numeric">{{ event.date }}</td>
+            {% else %}
+              <td class="mdl-data-table__cell--non-numeric">{{ event.date_start }} - {{ event.date_end }}</td>
+            {% endif %}
+            <td class="mdl-data-table__cell--non-numeric">{{ event.signal.name }}</td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <table class="signals__table">
+                <tbody>
+                {% for condition in event.signal.condition_set.all %}
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">{{ condition.target.name }}</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{ condition.get_operator_display }}</td>
+                    <td>{{ condition.value }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="signal-list-component"></div>
+
+    {% for signal in object_list %}
+      <a class="signal" href='{% url 'signal-detail' signal.id %}'>
+        <h3 class="signal__name">{{ signal.name }}</h3>
+        <table class="signals__table mdl-data-table">
+          <tbody>
+          {% for condition in signal.condition_set.all %}
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">{{ condition.target.name }}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{ condition.get_operator_display }}</td>
+              <td>{{ condition.value }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </a>
+
+    {% endfor %}
+
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static 'dist/signal_list.js' %}"></script>
+{% endblock javascript %}

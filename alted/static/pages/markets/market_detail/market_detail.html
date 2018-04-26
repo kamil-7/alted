@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  {% include 'markets/market_detail_header/market_detail_header.html' %}
+
+  <div class="container content">
+    <div class="market-detail-component"></div>
+  </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+  <script src="{% static "dist/market_detail.js" %}"></script>
+{% endblock %}

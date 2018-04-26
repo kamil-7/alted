@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load humanize format %}
+
+{% block content %}
+  <div class="heading-bar">
+    <div class="container">
+      <div class="heading-bar__content">
+        <h1>Arbitrage</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container content">
+    <table class="coin_list mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th>Coin</th>
+          <th>24h Volume</th>
+          <th>USD price</th>
+          <th>24h Volume in BTC</th>
+          <th>BTC price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for arbitrage_log in object_list %}
+          <tr onclick="window.location='{% url 'coin-detail' coin.slug %}';">
+            <td><a href="{% url 'coin-detail' coin.slug %}">{{ coin.name }}</a></td>
+            <td>${{ coin.volume_usd | format_round_fiat }}</td>
+            <td>${{ coin.price_usd | format_fiat }}</td>
+            <td>{{ coin.volume_btc | intcomma }}</td>
+            <td>{{ coin.price_btc | default_if_none:"" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

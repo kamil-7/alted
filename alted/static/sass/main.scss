@@ -1,0 +1,192 @@
+@import 'variables';
+@import 'material';
+@import 'material-icons';
+@import 'chartist';
+@import 'custom-material';
+@import 'react-autosuggest';
+@import 'visibility';
+@import 'forms';
+@import '../account/account';
+@import '../common/common';
+@import '../pages/pages';
+@import '../markets/markets';
+@import '../coins/coins';
+@import '../arbitrage/arbitrage';
+@import '../signals/signals';
+@import 'lib/alertify';
+
+body {
+  background-color: #fafafa;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.hr-thin {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+// Display django-debug-toolbar.
+//   See https://github.com/django-debug-toolbar/django-debug-toolbar/issues/742
+//   and https://github.com/pydanny/cookiecutter-django/issues/317
+//
+[hidden][style="display: block;"] {
+  display: block !important;
+}
+
+.col-center {
+  margin: 10px 0;
+}
+
+.col-left {
+  @include shadow();
+  background-color: $white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px 10px;
+}
+
+.col-right {
+  @include shadow();
+  background-color: $white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px 10px;
+}
+
+.col-right--no-shadow {
+  //background-color: $white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  //padding: 20px 10px;
+}
+
+div.container-fluid > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-header {
+  align-items: center;
+  -webkit-box-align: center;
+  display: flex;
+}
+
+@media (max-width: 575px) {
+  .expandable {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+%flex {
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-box-flex: 0;
+  display: flex;
+}
+
+.paper {
+  @include paper();
+}
+
+.input {
+  @extend %input;
+}
+
+.flex {
+  @extend %flex
+}
+
+html {
+  height: 100%;
+}
+
+.wrapp {
+  flex: 1;
+}
+
+.banner__button {
+  height: 28px;
+  line-height: 28px;
+  margin: 5px;
+}
+
+.banner {
+  text-align: center;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.container-clear {
+  width: 100%;
+  max-width: 1100px;
+}
+
+//.page-content {
+//  margin-bottom: -40px;
+//  min-height: 100%;
+//}
+
+.mdl-layout__content {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 0;
+}
+
+h3 {
+  font-size: 19px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.ct-line {
+  shape-rendering: geometricPrecision;
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.separator {
+  border-right: 1px solid hsla(0, 0%, 100%, .25);
+  height: 32px;
+}
+
+.mdl-button--accent {
+  //color: black !important;
+  background-color: $red-a400 !important;
+}
+
+.heading-bar__inline-text {
+  display: inline;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.message {
+  @include paper();
+  max-width: 800px;
+  margin: 16px auto;
+  box-sizing: border-box;
+}
+

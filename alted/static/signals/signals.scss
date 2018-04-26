@@ -1,0 +1,58 @@
+.signal {
+  display: block;
+  @include paper();
+  margin: 18px 0;
+}
+
+.signals__table {
+  width: 100%;
+
+  & tbody tr:hover {
+    background: transparent;
+  }
+}
+
+.signal__name {
+  margin-bottom: 8px;
+}
+
+.signal__field {
+  width: 100%;
+  padding: 12px 0;
+}
+
+.signal__conditions {
+  border-top: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.signals {
+  @include shadow();
+  background-color: $white;
+  display: block;
+  margin: 18px 0;
+}
+
+.signal-create__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signals__section {
+  padding: 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+
+  &--last {
+    border-bottom: 0;
+  }
+}
+
+.signals__remove-condition {
+  float: right;
+  color: #fff;
+  background-color: $red-a200;
+}
+
+.signal-create__condition-heading {
+  margin-bottom: 8px;
+}

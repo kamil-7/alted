@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="heading-bar">
+    <div class="container">
+      <div class="heading-bar__content">
+        <h1>Signal details</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content">
+    <div class="signal-detail-component"></div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static "dist/signal_detail.js" %}"></script>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "account/base.html" %}
+
+{% load addclass %}
+{% load account socialaccount %}
+
+{% block account_title %}Log In{% endblock %}
+
+{% block account_content %}
+  <div class="account row">
+    <h1>Log In</h1>
+{#    <div class="col-md-5 account__social">#}
+{#      {% include 'common/google_button/google_button.html' with action='login' text='Log In with Google' %}#}
+{#    </div>#}
+{##}
+{#    <div class="col-md-1">#}
+{#      <span class="or">or</span>#}
+{#    </div>#}
+{##}
+    <div class="col-md-6">
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        <div class="account__field">
+          <label for="id_login">
+            Username or Email
+          </label>
+          {{ form.login|addclass:'account__input' }}
+          {% for error in form.login.errors %}
+            <div class="mdl-textfield__error">
+              {{ error|escape }}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="account__field">
+          <label for="id_password">
+            Password
+          </label>
+          {{ form.password|addclass:'account__input' }}
+          {% for error in form.password.errors %}
+            <div class="mdl-textfield__error">
+              {{ error|escape }}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% for error in form.non_field_errors %}
+          <div class="mdl-textfield__error account__form-error">
+            {{ error|escape }}
+          </div>
+        {% endfor %}
+
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">Log In</button>
+        <a class="login__forgot-password" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+      </form>
+    </div>
+
+  </div>
+{% endblock %}
+

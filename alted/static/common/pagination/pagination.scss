@@ -1,0 +1,29 @@
+.pagination {
+  margin-top: 15px;
+}
+
+.pagination__element {
+  @include shadow();
+  background-color: $white;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  transition: color 2s;
+  width: 36px;
+
+  &--active {
+    background-color: $blue;
+  }
+}
+
+.pagination__link {
+  font-size: 24px;
+
+  &--active {
+    color: $white;
+  }
+}

@@ -1,0 +1,16 @@
+.coin__usd {
+  font-size: 32px
+}
+
+.coin__btc {
+  font-size: 24px;
+}
+
+.coin__header {
+  @include shadow();
+  background: #fff;
+}
+
+.coin__header-cell {
+  padding: 8px;
+}

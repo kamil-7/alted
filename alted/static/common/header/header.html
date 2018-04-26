@@ -1,0 +1,33 @@
+<header class="mdl-layout__header mdl-layout__header--scroll">
+  <div class="mdl-layout__header-row container header__wrapper">
+    <div class="header__home-wrapper">
+      <a href="{% url 'home' %}" class="header__home">
+        <span class="mdl-layout-title">Alted.io</span>
+      </a>
+    </div>
+    <div class="separator"></div>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="{% url 'home' %}">Coins</a>
+      <a class="mdl-navigation__link" href="{% url 'exchange-list' %}">Exchanges</a>
+      <a class="mdl-navigation__link" href="{% url 'market-list' %}">Markets</a>
+{#      <a class="mdl-navigation__link" href="{% url 'price-diff-list' %}">Price Differences</a>#}
+      <a class="mdl-navigation__link" href="{% url 'signal-list' %}">Signals</a>
+    </nav>
+    <div class="mdl-layout-spacer"></div>
+    <nav class="mdl-navigation">
+      {% if user.is_authenticated %}
+        <a href="{% url 'account_logout' %}" class="header__flat-button mdl-button mdl-js-button mdl-js-ripple-effect">
+          Log Out
+        </a>
+      {% else %}
+        <a href="{% url 'account_login' %}" class="header__flat-button mdl-button mdl-js-button mdl-js-ripple-effect">
+          Log In
+        </a>
+        <a href="{% url 'account_signup' %}"
+           class="header__button mdl-button mdl-js-button mdl-button--raised mdl-button--white mdl-js-ripple-effect">
+          Sign Up
+        </a>
+      {% endif %}
+    </nav>
+  </div>
+</header>

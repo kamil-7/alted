@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  {% include 'coins/coin_detail_header/coin_detail_header.html' %}
+
+  <div class="container content">
+    <div class="coin-component"></div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static "dist/coin_detail.js" %}"></script>
+{% endblock %}

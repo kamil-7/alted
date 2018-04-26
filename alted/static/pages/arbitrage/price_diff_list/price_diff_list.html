@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="heading-bar">
+    <div class="container">
+      <div class="heading-bar__content">
+        <h1>Price Differences</h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container content">
+    <table class="market_list mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for price_diff in object_list %}
+          <tr onclick="window.location='{% url 'price-diff-detail' price_diff.slug %}';">
+            <td><a href="{% url 'price-diff-detail' price_diff.slug %}">{{ price_diff.slug }}</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

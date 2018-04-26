@@ -1,0 +1,225 @@
+@mixin shadow($level: 1) {
+  @if $level == 1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  } @else if $level == 2 {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  } @else if $level == 3 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  } @else if $level == 4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  } @else if $level == 5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@mixin shadow-flat($level: 1) {
+  @if $level == 1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  //@else if $level == 2 {box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
+  //@else if $level == 3 {box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);}
+  //@else if $level == 4 {box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+  //@else if $level == 5 {box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);}
+}
+
+@mixin paper($level: 1) {
+  @include shadow($level);
+  background: $white;
+  padding: 18px;
+}
+
+@mixin paper-flat($level: 1) {
+  @include shadow-flat($level);
+  background: $white;
+  padding: 18px;
+}
+
+.mdl-chip {
+  color: $purple;
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.mdl-layout__header-row {
+  padding-left: 0;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+.mdl-navigation__link:hover {
+  background-color: $blue-700;
+}
+
+.mdl-card__supporting-text {
+  padding-top: 0;
+}
+
+.heading-bar {
+  background: linear-gradient(145deg, #0D47A1 -22%, #2196F3 110%);
+}
+
+.heading-bar__content {
+  color: $white;
+  padding: 8px 16px;
+
+  h1 {
+    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.mdl-layout__header {
+  display: block;
+}
+
+@media (max-width: 479px) {
+  .mdl-grid {
+    padding: 0;
+  }
+}
+
+@media (max-width: 839px) and (min-width: 480px) {
+  .mdl-grid {
+    padding: 0;
+  }
+}
+
+.mdl-card__close {
+  cursor: pointer;
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25px;
+}
+
+@mixin separator() {
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+
+//.mdl-tabs__tab.is-active {
+//  color: rgba(0,0,0,.87);
+//  box-sizing: border-box;
+//  border-bottom-color: $accent-color;
+//  border-bottom-width: 3px;
+//  border-bottom-style: solid;
+//}
+
+.mdl-data-table th {
+  font-size: 16px;
+}
+
+.mdl-layout__content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+}
+
+.mdl-layout__content > *:not(.mdl-layout-spacer) {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+.getmdl-select {
+
+  .mdl-icon-toggle__label {
+    float: right;
+    margin-top: -30px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+  &.is-focused {
+    .mdl-icon-toggle__label {
+      color: #3f51b5;
+    }
+  }
+
+  .mdl-menu__container {
+    width: 100% !important;
+    overflow: hidden;
+    .mdl-menu .mdl-menu__item {
+      font-size: 16px;
+    }
+  }
+}
+
+.getmdl-select__fullwidth {
+  .mdl-menu {
+    width: 100%;
+  }
+}
+
+.getmdl-select__fix-height {
+  .mdl-menu__container {
+    overflow-y: auto;
+    max-height: 300px !important;
+  }
+}
+
+.input {
+  background-color: #fff;
+  border-color: #d9d9d9 #ccc #b3b3b3;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #333;
+  cursor: default;
+  display: table;
+  border-spacing: 0;
+  border-collapse: separate;
+  height: 36px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.horizontal-separator {
+  margin: 16px -17px;
+}
+
+
+
+.delete-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.delete-button {
+  background-color: $red-a200;
+  color: white;
+}
+
+.blue-link {
+  color: $indigo;
+}
+
+.form__error-icon {
+  color: $red-a200;
+  vertical-align: bottom;
+  margin: 0 4px;
+}
+
+.form__error {
+  margin-top: 4px;
+}
+
+.mdl-data-table--no-border {
+  border: 0;
+}
+

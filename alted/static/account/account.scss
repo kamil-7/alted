@@ -1,0 +1,63 @@
+.logout {
+  @include paper();
+}
+
+.account {
+  @include paper();
+}
+
+
+.account__input {
+  @extend %input;
+}
+
+.account__field {
+  margin-bottom: 15px;
+}
+
+.login__forgot-password {
+  float: right;
+}
+
+.login__button {
+  float: left;
+}
+
+.account__form-error {
+  margin: 15px 0;
+}
+
+.or {
+  display: block;
+  font-size: 16px;
+  padding-top: 16px;
+  overflow: hidden;
+  background-color: #fff;
+  text-align: center;
+  color: $grey;
+}
+
+.account__border-right {
+  //border-right: 1px solid $grey;
+}
+
+.account__social {
+  margin-top: 6px;
+  text-align: center;
+}
+
+#my-signin2 {
+  text-align: center;
+}
+
+.account__container {
+  max-width: 800px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 32px;
+}
+
+.account h1 {
+  margin-top: 0;
+}
