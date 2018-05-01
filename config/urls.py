@@ -10,7 +10,7 @@ from rest_framework.routers import DefaultRouter
 
 from alted.views import TargetListAPI
 from arbitrage.views import PriceDiffDetailView, PriceDiffListView
-from coins.views import CoinListView, CoinDetailView, CoinMarketsView
+from coins.views import CoinListView, CoinDetailView, CoinMarketsView, CoinDetailAPI
 from exchanges.views import ExchangeListView, ExchangeDetailView
 from markets.views import MarketListView, MarketDetailView
 from signals.views import SignalListView, SignalDetailView, ConditionCreateAPI, SignalUpdateAPI, SignalCreateAPI
@@ -43,6 +43,7 @@ urlpatterns = [
                   path('api/signal-create/', SignalCreateAPI.as_view(), name='signal-create-api'),
                   path('api/signal-update/<int:pk>/', SignalUpdateAPI.as_view(), name='signal-update-api'),
                   path('api/condition-create/', ConditionCreateAPI.as_view(), name='condition-create-api'),
+                  path('api/coin-detail/<slug:slug>/', CoinDetailAPI.as_view(), name='coin-detial-api'),
 
                   path('login/', LoginView.as_view(), name='account_login'),
                   path('logout/', LogoutView.as_view(), name='account_logout'),

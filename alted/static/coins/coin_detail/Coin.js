@@ -9,7 +9,7 @@ import "../chart/Chart.js";
 class Coin extends Component {
   updateCoin = () => {
     this.props.fetchCoin();
-    setTimeout(this.updateCoin, 10000);
+    setTimeout(this.updateCoin, 60000);
   };
 
   componentDidMount = () => {

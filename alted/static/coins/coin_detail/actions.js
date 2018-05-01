@@ -14,9 +14,9 @@ export function fetchCoinSuccess(data) {
 
 export function fetchCoin() {
   return (dispatch, getState) => {
-    let id = getState().id;
+    let slug = getState().coin.slug;
     axios
-      .get(`${COIN_DETAIL_URL}${id}/`)
+      .get(`${COIN_DETAIL_URL}${slug}/`)
       .then(response => {
         dispatch(fetchCoinSuccess(response.data))
       })

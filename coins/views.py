@@ -3,6 +3,7 @@ import json
 from django.db.models import Q
 from django.views.generic import DetailView
 from django.views.generic import ListView
+from rest_framework.generics import RetrieveAPIView
 
 from alted.utils import CustomEncoder
 from coins.models import Coin, Tick
@@ -43,3 +44,11 @@ class CoinMarketsView(DetailView):
         market_list = Market.objects.filter(Q(coin=coin) | Q(base=coin)).order_by('-volume_btc')
         context['market_list'] = market_list
         return context
+
+
+class CoinDetailAPI(RetrieveAPIView):
+    authentication_classes = ()
+    permission_classes = ()
+    serializer_class = CoinSerializer
+    queryset = Coin.objects.all()
+    lookup_field = "slug"
