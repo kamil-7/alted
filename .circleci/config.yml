@@ -1,0 +1,96 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # using custom image, see .circleci/images/primary/Dockerfile
+      - image: python:latest
+#        environment:
+#          POSTGRES_USER: ubuntu
+#          POSTGRES_DB: contacts
+#    working_directory: /go/src/github.com/fsdevio/alted
+
+    environment:
+      TEST_RESULTS: /tmp/test-results
+
+    steps:
+      - checkout
+#
+#      - run:
+#          name: Waiting for Postgres to be ready
+#          command: |
+#            for i in `seq 1 10`;
+#            do
+#              nc -z localhost 5432 && echo Success && exit 0
+#              echo -n .
+#              sleep 1
+#            done
+#            echo Failed waiting for Postgress && exit 1
+#
+#      - run: mkdir -p $TEST_RESULTS
+#
+#      - run:
+#          name: Run unit tests
+#          environment:
+#            DATABASE_URL: "postgres://ubuntu@localhost:5432/contacts?sslmode=disable"
+#            DB_MIGRATIONS: /go/src/github.com/circleci/cci-demo-docker/db/migrations
+#          command: |
+#            set -ou pipefail
+#            trap "go-junit-report <${TEST_RESULTS}/go-test.out > ${TEST_RESULTS}/go-test-report.xml" EXIT
+#            # Notice this `set -o pipefail`, this will cause script to fail if `make test` fails
+#            # without this option script will return success regardless of testing result due to pipe after test command
+#            make test | tee ${TEST_RESULTS}/go-test.out
+
+      - setup_remote_docker
+
+      # This should go into custom primary image, here's only for the sake of explanation
+      - run:
+          name: Install Docker client
+          command: |
+            set -x
+            VER="17.03.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://get.docker.com/builds/Linux/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin
+
+      # This should go into custom primary image, here's only for the sake of explanation
+      - run:
+          name: Install Docker Compose
+          command: |
+            set -x
+            curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+
+      - run:
+          name: Start container and verify it's working
+          command: |
+            set -x
+            docker-compose up -d
+
+            # docker-compose will start 2 containers, the one with service will be named `contacts`
+            # we start another container with curl in the same network as `contacts`, this way we have
+            # all exposed ports from `contacts` available on `localhost` in this new container
+#            docker run --network container:contacts \
+#              appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost:8080/contacts/test
+
+      - run:
+          name: build static files
+          command: |
+            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+            sudo apt install -y nodejs
+            python utils/build_js.py
+
+      - deploy:
+          name: Build and push Docker image
+          command: |
+            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+            docker push vt2.fsdev.io/alted/django:$VERSION
+            docker push vt2.fsdev.io/alted/postgres:$VERSION
+            docker push vt2.fsdev.io/alted/celeryworker:$VERSION
+            docker push vt2.fsdev.io/alted/celerybeat:$VERSION
+
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: raw-test-output
+
+      - store_test_results:
+          path: /tmp/test-results
