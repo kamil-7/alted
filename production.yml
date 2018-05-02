@@ -6,6 +6,7 @@ volumes:
 
 services:
   django:
+    env_file: .env.production
     image: vt2.fsdev.io/alted/django:${VERSION}
     build:
       context: .
@@ -13,12 +14,12 @@ services:
     depends_on:
       - postgres
       - redis
-    env_file: .env.production
     command: /gunicorn.sh
     ports:
       - "5000:5000"
 
   postgres:
+    env_file: .env.production
     image: vt2.fsdev.io/alted/postgres:${VERSION}
     build:
       context: .
@@ -26,28 +27,27 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backupss
-    env_file: .env.production
 
   redis:
     image: redis:3.0
 
   celeryworker:
+    env_file: .env.production
     image: vt2.fsdev.io/alted/celeryworker:${VERSION}
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    env_file: .env.production
     depends_on:
      - postgres
      - redis
     command: /start-celeryworker.sh
 
   celerybeat:
+    env_file: .env.production
     image: vt2.fsdev.io/alted/celerybeat:${VERSION}
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    env_file: .env.production
     depends_on:
       - postgres
       - redis
