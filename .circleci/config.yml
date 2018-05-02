@@ -62,8 +62,7 @@ jobs:
 
       - run:
           name: Generate version number
-          command: |
-            export VERSION=${cat version | tr -d " \t\n\r"}+${CIRCLE_BUILD_NUM}
+          command: export VERSION=$(cat version | tr -d " \t\n\r"; echo "+" | tr -d "\n"; echo $CIRCLECI_BUILD_NUM)
 
       - run:
           name: Start container and verify it's working
