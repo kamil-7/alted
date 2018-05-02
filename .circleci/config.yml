@@ -67,6 +67,7 @@ jobs:
       - run:
           name: Start container and verify it's working
           command: |
+            export version=test
             set -x
             docker-compose -f production.yml up -d
 
@@ -96,6 +97,7 @@ jobs:
       - deploy:
           name: Build and push Docker image
           command: |
+            printenv | grep VERSION
             docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
             docker push vt2.fsdev.io/alted/django:$VERSION
             docker push vt2.fsdev.io/alted/postgres:$VERSION
