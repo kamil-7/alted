@@ -76,7 +76,7 @@ jobs:
           name: build static files
           command: |
             curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-            sudo apt install -y nodejs
+            apt install -y nodejs
             python utils/build_js.py
 
       - deploy:

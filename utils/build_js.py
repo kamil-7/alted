@@ -31,7 +31,7 @@ tag = os.environ['VERSION']
 
 working_directory = os.getcwd()
 
-call(["sudo", "npm", "install"], cwd=working_directory)
+call(["npm", "install"], cwd=working_directory)
 call(["webpack", "-p"], cwd=working_directory)
 
 ftp = FTP_TLS("ftp.keycdn.com")
