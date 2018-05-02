@@ -66,6 +66,6 @@
     "redux-form": "^7.3.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "webpack": "2.4.1",
+    "webpack": "2.4.1"
   }
 }
