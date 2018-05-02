@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 import environ
 
-VERSION = '0.1.0'
 
 ROOT_DIR = environ.Path(__file__) - 3  # (alted/config/settings/base.py - 3 = alted/)
 APPS_DIR = ROOT_DIR.path('alted')
@@ -28,6 +27,8 @@ if READ_DOT_ENV_FILE:
     print('Loading : {}'.format(env_file))
     env.read_env(env_file)
     print('The .env file has been loaded. See base.py for more information')
+
+VERSION = env('VERSION')
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
