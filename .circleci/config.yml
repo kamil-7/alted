@@ -62,7 +62,7 @@ jobs:
 
       - run:
           name: Generate version number
-          command: export VERSION=$(cat version | tr -d " \t\n\r"; echo "+" | tr -d "\n"; echo $CIRCLECI_BUILD_NUM)
+          command: python utils/generate_version.py
 
       - run:
           name: Start container and verify it's working

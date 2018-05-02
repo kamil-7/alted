@@ -26,7 +26,9 @@ def upload_files(ftp, path):
 
 ftp_username = os.environ['FTP_USERNAME']
 ftp_password = os.environ['FTP_PASSWORD']
-tag = os.environ['VERSION']
+
+with open('version') as file:
+    version = file.read().rstrip()
 
 working_directory = os.getcwd()
 
@@ -34,8 +36,8 @@ ftp = FTP_TLS("ftp.keycdn.com")
 ftp.login(user=ftp_username, passwd=ftp_password)
 
 ftp.cwd('alted')
-ftp.mkd(tag)
-ftp.cwd(tag)
+ftp.mkd(version)
+ftp.cwd(version)
 
 upload_files(ftp, '{}/{}'.format(working_directory, 'static'))
 
