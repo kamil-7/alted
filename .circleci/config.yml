@@ -82,7 +82,7 @@ jobs:
           name: Build static files
           command: |
             npm install
-            webpack -p
+            ./node_modules/.bin/webpack -p
 
       - run:
           name: Upload built static files
