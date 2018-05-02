@@ -26,7 +26,7 @@ services:
       dockerfile: ./compose/production/postgres/Dockerfile
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - postgres_backup:/backupss
+      - postgres_backup:/backups
 
   redis:
     image: redis:3.0
@@ -43,7 +43,7 @@ services:
     command: /start-celeryworker.sh
 
   celerybeat:
-    env_file: .env.production
+    env_file:tdoc .env.production
     image: vt2.fsdev.io/alted/celerybeat:${VERSION}
     build:
       context: .
