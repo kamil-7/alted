@@ -13,7 +13,7 @@ services:
     depends_on:
       - postgres
       - redis
-    env_file: .env
+    env_file: .env.production
     command: /gunicorn.sh
     ports:
       - "5000:5000"
@@ -26,7 +26,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backupss
-    env_file: .env
+    env_file: .env.production
 
   redis:
     image: redis:3.0
@@ -36,7 +36,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    env_file: .env
+    env_file: .env.production
     depends_on:
      - postgres
      - redis
@@ -47,7 +47,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    env_file: .env
+    env_file: .env.production
     depends_on:
       - postgres
       - redis
