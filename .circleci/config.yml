@@ -73,11 +73,21 @@ jobs:
 #              appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost:8080/contacts/test
 
       - run:
-          name: build static files
+          name: Install node.js and npm
           command: |
             curl -sL https://deb.nodesource.com/setup_8.x | bash -
             apt install -y nodejs
-            python utils/build_js.py
+
+      - run:
+          name: Build static files
+          command: |
+            npm install
+            webpack -p
+
+      - run:
+          name: Upload built static files
+          command: |
+            python utils/upload_static_files.py
 
       - deploy:
           name: Build and push Docker image

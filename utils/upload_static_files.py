@@ -1,7 +1,6 @@
 import os
 from ftplib import FTP_TLS
 from ftplib import error_perm
-from subprocess import call
 
 
 def upload_files(ftp, path):
@@ -30,9 +29,6 @@ ftp_password = os.environ['FTP_PASSWORD']
 tag = os.environ['VERSION']
 
 working_directory = os.getcwd()
-
-call(["npm", "install"], cwd=working_directory)
-call(["webpack", "-p"], cwd=working_directory)
 
 ftp = FTP_TLS("ftp.keycdn.com")
 ftp.login(user=ftp_username, passwd=ftp_password)
