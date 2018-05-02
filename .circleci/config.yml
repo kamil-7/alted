@@ -61,9 +61,9 @@ jobs:
             chmod +x /usr/local/bin/docker-compose
 
       - run:
-        name: Generate version number
-        command: |
-          export VERSION=${cat version | tr -d " \t\n\r"}+${CIRCLE_BUILD_NUM}
+          name: Generate version number
+          command: |
+            export VERSION=${cat version | tr -d " \t\n\r"}+${CIRCLE_BUILD_NUM}
 
       - run:
           name: Start container and verify it's working
