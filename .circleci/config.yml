@@ -48,7 +48,7 @@ jobs:
           command: |
             mkdir /etc/docker
             echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json
-            sudo apt-get install \
+            apt-get install \
             apt-transport-https \
             ca-certificates \
             curl \
