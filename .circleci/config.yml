@@ -56,7 +56,7 @@ jobs:
             $(lsb_release -cs) \
             stable"
             apt update
-            apt install docker-ce
+            apt -y install docker-ce
 
       # This should go into custom primary image, here's only for the sake of explanation
       - run:
