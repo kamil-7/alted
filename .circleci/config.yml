@@ -15,10 +15,10 @@ jobs:
     steps:
       - checkout
       - run:
-        name: config
-        command: |
-          mkdir /etc/docker
-          echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json
+          name: config
+          command: |
+            mkdir /etc/docker
+            echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json
 
 #
 #      - run:
