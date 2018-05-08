@@ -60,8 +60,8 @@ jobs:
       - run:
           name: Install node.js and npm
           command: |
-            curl -sL https://deb.nodesource.com/setup_8.x | bash -
-            apt install -y nodejs
+            sudo curl -sL https://deb.nodesource.com/setup_8.x | bash -
+            sudo apt install -y nodejs
 
 #      - run:
 #          name: Build static files
