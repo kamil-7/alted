@@ -11,8 +11,9 @@ jobs:
       - run:
           name: config
           command: |
-            sudo sh -c 'echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json'
-            sudo service docker restart
+            sudo -i
+            echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json'
+            service docker restart
 #
 #      - run:
 #          name: Waiting for Postgres to be ready
