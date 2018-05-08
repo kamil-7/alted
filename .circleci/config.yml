@@ -12,7 +12,7 @@ jobs:
           name: config
           command: |
             sudo -i
-            echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json'
+            echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json
             service docker restart
 #
 #      - run:
