@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    machine: true
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
       - image: python:latest
@@ -19,7 +20,7 @@ jobs:
           command: |
             mkdir /etc/docker
             echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json
-
+            service docker restart
 #
 #      - run:
 #          name: Waiting for Postgres to be ready
