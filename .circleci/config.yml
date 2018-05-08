@@ -1,8 +1,7 @@
 version: 2
 jobs:
   build:
-    machine: true
-    docker:
+    machine:
       # using custom image, see .circleci/images/primary/Dockerfile
       - image: python:latest
 #        environment:
