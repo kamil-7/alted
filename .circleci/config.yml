@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Install node.js and npm
           command: |
-            sudo curl -sL https://deb.nodesource.com/setup_8.x | bash -
+            curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
             sudo apt install -y nodejs
 
 #      - run:
