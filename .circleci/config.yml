@@ -1,13 +1,7 @@
 version: 2
 jobs:
   build:
-    machine:
-      # using custom image, see .circleci/images/primary/Dockerfile
-      - image: python:latest
-#        environment:
-#          POSTGRES_USER: ubuntu
-#          POSTGRES_DB: contacts
-#    working_directory: /go/src/github.com/fsdevio/alted
+    machine: true
 
     environment:
       TEST_RESULTS: /tmp/test-results
@@ -89,16 +83,16 @@ jobs:
             curl -sL https://deb.nodesource.com/setup_8.x | bash -
             apt install -y nodejs
 
-      - run:
-          name: Build static files
-          command: |
-            npm install
-            ./node_modules/.bin/webpack -p
-
-      - run:
-          name: Upload built static files
-          command: |
-            python utils/upload_static_files.py
+#      - run:
+#          name: Build static files
+#          command: |
+#            npm install
+#            ./node_modules/.bin/webpack -p
+#
+#      - run:
+#          name: Upload built static files
+#          command: |
+#            python utils/upload_static_files.py
 
       - deploy:
           name: Build and push Docker image
