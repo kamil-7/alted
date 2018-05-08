@@ -11,9 +11,9 @@ jobs:
       - run:
           name: config
           command: |
-            sudo -i
-            echo  '{"insecure-registries" : [ "vt2.fsdev.io" ]}' > /etc/docker/daemon.json
-            service docker restart
+            export DAEMON_CONFIG=\''{"insecure-registries" : [ "vt2.fsdev.io" ]}'\'
+            sudo sh -c "echo $DAEMON_CONFIG > /etc/docker/daemon.json"
+            sudo service docker restart
 #
 #      - run:
 #          name: Waiting for Postgres to be ready
@@ -61,7 +61,7 @@ jobs:
       - run:
           name: Install node.js and npm
           command: |
-            curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+            sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
             sudo apt install -y nodejs
 
 #      - run:
