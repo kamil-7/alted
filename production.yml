@@ -17,7 +17,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      DJANGO_SETTINGS_MODULE=config.settings.production
+      - DJANGO_SETTINGS_MODULE=config.settings.production
 
   postgres:
     image: vt2.fsdev.io/alted/postgres:${VERSION}
@@ -28,7 +28,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backupss
     environment:
-      DJANGO_SETTINGS_MODULE=config.settings.production
+      - DJANGO_SETTINGS_MODULE=config.settings.production
 
 
   redis:
@@ -44,7 +44,7 @@ services:
      - redis
     command: /start-celeryworker.sh
     environment:
-      DJANGO_SETTINGS_MODULE=config.settings.production
+      - DJANGO_SETTINGS_MODULE=config.settings.production
 
   celerybeat:
     image: vt2.fsdev.io/alted/celerybeat:${VERSION}
@@ -56,4 +56,4 @@ services:
       - redis
     command: /start-celerybeat.sh
     environment:
-      DJANGO_SETTINGS_MODULE=config.settings.production
+      - DJANGO_SETTINGS_MODULE=config.settings.production
