@@ -124,6 +124,18 @@ Open `http://127.0.0.1:8000/` to access the website.
 
 Default admin username is `admin@mail.com` and password `pass`.
 
+## Production
+
+Variables that need to be set in the production environment:
+
+```
+POSTGRES_PASSWORD
+POSTGRES_USER
+DJANGO_SECRET_KEY
+SENTRY_DSN
+SENDGRID_API_KEY
+```
+
 ## Authors
 
 - **Kamil Moczydłowski** - [fsdev.io](https://fsdev.io)

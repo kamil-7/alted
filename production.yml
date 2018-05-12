@@ -16,7 +16,8 @@ services:
     command: /gunicorn.sh
     ports:
       - "5000:5000"
-    env_file: .env.production
+    environment:
+      DJANGO_SETTINGS_MODULE=config.settings.production
 
   postgres:
     image: vt2.fsdev.io/alted/postgres:${VERSION}
@@ -26,7 +27,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - postgres_backup:/backupss
-    env_file: .env.production
+    environment:
+      DJANGO_SETTINGS_MODULE=config.settings.production
+
 
   redis:
     image: redis:3.0
@@ -40,7 +43,8 @@ services:
      - postgres
      - redis
     command: /start-celeryworker.sh
-    env_file: .env.production
+    environment:
+      DJANGO_SETTINGS_MODULE=config.settings.production
 
   celerybeat:
     image: vt2.fsdev.io/alted/celerybeat:${VERSION}
@@ -51,4 +55,5 @@ services:
       - postgres
       - redis
     command: /start-celerybeat.sh
-    env_file: .env.production
+    environment:
+      DJANGO_SETTINGS_MODULE=config.settings.production
